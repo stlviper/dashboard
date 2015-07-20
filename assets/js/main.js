@@ -1,7 +1,7 @@
 var modules = [];
 var GITHUB_API = "https://api.github.com/";
 var GOVCODE_API = "https://api.govcode.org/"
-var ORGANIZATION = "18f";
+var ORGANIZATION = "stlviper";
 // team api will always be at the same server the dashboard is running on, this
 // makes it flexible for local dev environments by sniffing out the beginning of
 // url and lopping any subdirectories off the browser's current document
