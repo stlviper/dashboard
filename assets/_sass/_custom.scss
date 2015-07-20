@@ -1087,9 +1087,9 @@
 	.container > div {
 		padding-top: 10px;
 		padding-bottom: 10px;
-		@include span-columns(2);
+		@include span-columns(3);
 		&:nth-of-type(3) {
-			@include span-columns(4);
+			@include span-columns(3);
 		}
 		@include media($tiny) {
 			@include span-columns(10);

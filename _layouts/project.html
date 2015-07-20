@@ -50,6 +50,30 @@ layout: bare
           </div>
         {% endif %}
 
+        <!-- jira -->
+        {% if project.jira %}
+        <div>
+          <h1><i class="fa fa-chevron-right"></i> jira</h1>
+          <p><a href="{{ project.jira }}">View Agile Board</a></p>
+        </div>
+        {% endif %}
+
+        <!-- confluence -->
+        {% if project.confluence %}
+        <div>
+          <h1><i class="fa fa-chevron-right"></i> confluence</h1>
+          <p><a href="{{ project.confluence }}">View Confluence Space</a></p>
+        </div>
+        {% endif %}
+
+        <!-- hipchat -->
+        {% if project.hipchat %}
+        <div>
+          <h1><i class="fa fa-chevron-right"></i> hipchat</h1>
+          <p><a href="{{ project.hipchat }}">Collaborate in HipChat</a></p>
+        </div>
+        {% endif %}
+
         <!-- partners -->
         {% if project.partner %}
           <div>
@@ -78,46 +102,69 @@ layout: bare
 
         <!-- code -->
         {% if project.github %}
-        <div class="dashboard-code">
-          <h1><i class="fa fa-chevron-right"></i> code</h1>
-          {% for url in project.github %}
-          {% capture repo_name %}{{ url | split: "/" | last }}{% endcapture %}
-          <div class="{{ repo_name | replace: ".", "-" }} repo">
-            <h1>
-              {% if project.github | first %}
-              <i class="fa fa-github-alt"></i> <a class="github-url" href="https://github.com/{{ url }}">{{ url }}</a>
-              {% else %}
-              <i class="fa fa-github-alt"></i> <a href="https://github.com/{{ url }}">{{ url }}</a>
-              {% endif %}
-            </h1>
-            <ul>
-              <li class="issues"><i class="fa fa-exclamation-circle"></i> Issues: </li>
-              <li class="stars"><i class="fa fa-star"></i> Stars: </li>
-              <li class="forks"><i class="fa fa-code-fork"></i> Forks: </li>
-              {% for license in project.licenses %}{% if license[0] == repo_name %}
-              {% capture branch %}{% if project.licenseBranch %}{{ project.licenseBranch | map: repo_name }}{% else %}master{%endif%}{% endcapture %}
-              <li><i class="fa fa-legal {{ license[0] }}"></i> License: <a href="https://github.com/{{ url }}/blob/{{ branch }}/LICENSE.md">{{ license[1] }}</a></li>
-                {% endif %}
-              {% endfor %}
-            </ul>
-          </div>
+      <div class="dashboard-code">
+        <h1><i class="fa fa-chevron-right"></i> code</h1>
+        {% for url in project.github %}
+        {% capture repo_name %}{{ url | split: "/" | last }}{% endcapture %}
+        <div class="{{ repo_name | replace: ".", "-" }} repo">
+        <h1>
+          {% if project.github | first %}
+          <i class="fa fa-github-alt"></i> <a class="github-url" href="https://github.com/{{ url }}">{{ url }}</a>
+          {% else %}
+          <i class="fa fa-github-alt"></i> <a href="https://github.com/{{ url }}">{{ url }}</a>
+          {% endif %}
+        </h1>
+        <ul>
+          <li class="issues"><i class="fa fa-exclamation-circle"></i> Issues: </li>
+          <li class="stars"><i class="fa fa-star"></i> Stars: </li>
+          <li class="forks"><i class="fa fa-code-fork"></i> Forks: </li>
+          {% for license in project.licenses %}{% if license[0] == repo_name %}
+          {% capture branch %}{% if project.licenseBranch %}{{ project.licenseBranch | map: repo_name }}{% else %}master{%endif%}{% endcapture %}
+          <li><i class="fa fa-legal {{ license[0] }}"></i> License: <a href="https://github.com/{{ url }}/blob/{{ branch }}/LICENSE.md">{{ license[1] }}</a></li>
+          {% endif %}
           {% endfor %}
-        </div>
-        {% endif %}
-<!--
-        {% if project.team.size > 0 %}
-        <div>
-           <h1>Team:</h1>
-           <ul class="staff">
-             {% capture team %}{{ project.team }}{% endcapture %}
-             {% assign team = team | split: ',' %}
-             {% for name in team %}
-              <li class="{{ name | replace: ' ', '' }}"></li>
-             {% endfor %}
-           </ul>
-         </div>
-        {% endif %}
--->
+        </ul>
+      </div>
+      {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if project.stash %}
+      <div class="dashboard-code">
+        <h1><i class="fa fa-chevron-right"></i> code</h1>
+        {% for url in project.stash %}
+        {% capture repo_name %}{{ url | split: "/" | last }}{% endcapture %}
+        <div class="{{ repo_name | replace: ".", "-" }} repo">
+        <h1>
+          {% if project.stash | first %}
+          <i class="fa fa-code"></i> <a class="github-url" href="https://code.ogsystems.com:8443/projects/{{ url }}">{{ url }}</a>
+          {% else %}
+          <i class="fa fa-code"></i> <a href="https://code.ogsystems.com:8443/projects/{{ url }}">{{ url }}</a>
+          {% endif %}
+        </h1>
+        <ul>
+          {% for license in project.licenses %}{% if license[0] == repo_name %}
+          {% capture branch %}{% if project.licenseBranch %}{{ project.licenseBranch | map: repo_name }}{% else %}master{%endif%}{% endcapture %}
+          <li><i class="fa fa-legal {{ license[0] }}"></i> License: <a href="https://github.com/{{ url }}/blob/{{ branch }}/LICENSE.md">{{ license[1] }}</a></li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if project.team.size > 0 %}
+      <div>
+         <h1>Team:</h1>
+         <ul class="staff">
+           {% for name in project.team %}
+            <li class="{{ name | replace: ' ', '' }}"><a href="https://projects.ogsystems.com/confluence/display/~{{ name }}">{{ name }}</a></li>
+           {% endfor %}
+         </ul>
+       </div>
+      {% endif %}
+
       <!-- additional links -->
       {% if project.links %}
         <div>
