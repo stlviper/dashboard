@@ -105,4 +105,38 @@
       "chad.dalton"
     ]
   },
+  "mosquito" : {
+    "stage" : "beta",
+    "project" : "Mosquito",
+    "jira" : "https://projects.ogsystems.com/jira/secure/RapidBoard.jspa?rapidView=20",
+    "impact" : "Mosquito is a small, handheld device built on commodity hardware that collects wireless signals of devices such as cell phones, laptops, or tablets. It performs passive wireless surveys of a targeted area, collecting the device information of potential targets. Collected information can quickly be transferred to a white/black list, and will alert you if these targeted devices are detected again. Mosquito can be deployed as a physical intrusion device (IDS) and placed in any building, facility or automobile.",
+    "milestones" : [
+      "?? 2015: MVP"
+    ],
+    "contact" : [
+      "amanda.satterwhite@ogsystems.com"
+    ],
+    "team" : [
+      "amanda.satterwhite",
+      "scott.drew"
+    ]
+  },
+  "crowd" : {
+    "stage" : "discovery",
+    "project" : "Croudsource Geoint",
+    "jira" : "https://projects.ogsystems.com/jira/secure/RapidBoard.jspa?rapidView=47",
+    "confluence" : "https://projects.ogsystems.com/confluence/display/VIP/GEOINT+Crowd+Source+Mission+Context+Description",
+    "impact" : "The GEOINT Crowd Source Ecosystem provides a capability for suggestion geospatially-oriented topical need to the general public in such a manner that the public can contribute its data and understanding towards the need. In the diagram, needs which may be in the form of specific request or more generalized interests are posted to a public-facing bulletin board by any interested stakeholder: public, community, academia, institution , or Government agency. ",
+    "milestones" : [
+      "?? 2015: MVP"
+    ],
+    "contact" : [
+      "corey.merkel@ogsystems.com"
+    ],
+    "team" : [
+      "corey.merkel",
+      "chad.dalton",
+      "mark.tappan"
+    ]
+  }
 }
